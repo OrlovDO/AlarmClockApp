@@ -18,13 +18,17 @@ class UpdateAlarmCommand @Inject constructor(
         daysOfWeek: List<AlarmDayOfWeek>? = null
     ): Single<Pair<AlarmInfo, Long?>> {
         return alarmDataBaseRepository.getAlarmById(id)
-            .flatMap { alarmDataBaseRepository.updateAlarm(AlarmInfo(
-                id,
-                hours?: it.hours,
-                minutes?: it.minutes,
-                isEnabled?: it.isEnabled,
-                daysOfWeek?: it.daysOfWeek
-            )) }.flatMap { updatedAlarm ->
+            .flatMap {
+                alarmDataBaseRepository.updateAlarm(
+                    AlarmInfo(
+                        id,
+                        hours ?: it.hours,
+                        minutes ?: it.minutes,
+                        isEnabled ?: it.isEnabled,
+                        daysOfWeek ?: it.daysOfWeek
+                    )
+                )
+            }.flatMap { updatedAlarm ->
                 Single.zip(
                     alarmManagerRepository.setAlarm(updatedAlarm),
                     Single.just(updatedAlarm),
@@ -33,5 +37,5 @@ class UpdateAlarmCommand @Inject constructor(
                     }
                 )
             }
-        }
+    }
 }

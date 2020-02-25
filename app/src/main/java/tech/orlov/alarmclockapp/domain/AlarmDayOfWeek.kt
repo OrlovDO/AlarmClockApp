@@ -1,6 +1,6 @@
 package tech.orlov.alarmclockapp.domain
 
-enum class AlarmDayOfWeek (val value: Int) {
+enum class AlarmDayOfWeek(val value: Int) {
     MONDAY(2),
     TUESDAY(3),
     WEDNESDAY(4),

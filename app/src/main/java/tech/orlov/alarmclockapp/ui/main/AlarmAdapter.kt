@@ -8,19 +8,18 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_alarm.view.*
 import tech.orlov.alarmclockapp.R
-import java.time.DayOfWeek
 
 class AlarmAdapter(
     private var alarms: MutableList<AlarmVo>,
     private var alarmListener: AlarmListener
 ) : RecyclerView.Adapter<AlarmAdapter.AlarmViewHolder>() {
 
-    fun addAlarm(alarm: AlarmVo){
+    fun addAlarm(alarm: AlarmVo) {
         alarms.add(alarm)
         notifyItemInserted(alarms.size - 1);
     }
 
-    fun updateAlarm(alarm: AlarmVo){
+    fun updateAlarm(alarm: AlarmVo) {
         val index = alarms.indexOfFirst { it.id == alarm.id }
         alarms[index] = alarm
         notifyItemChanged(index)
@@ -45,7 +44,8 @@ class AlarmAdapter(
         notifyItemRemoved(index)
     }
 
-    inner class AlarmViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView),
+    inner class AlarmViewHolder(override val containerView: View) :
+        RecyclerView.ViewHolder(containerView),
         LayoutContainer, CompoundButton.OnCheckedChangeListener {
 
         private lateinit var alarm: AlarmVo
@@ -75,7 +75,7 @@ class AlarmAdapter(
             alarmListener.onDaysOfWeekChanged(alarm.id, getEnabledDaysOfWeekList())
         }
 
-        private fun setChipsListeners(){
+        private fun setChipsListeners() {
             containerView.mondayChip.setOnCheckedChangeListener(this)
             containerView.tuesdayChip.setOnCheckedChangeListener(this)
             containerView.wednesdayChip.setOnCheckedChangeListener(this)
@@ -85,7 +85,7 @@ class AlarmAdapter(
             containerView.sundayChip.setOnCheckedChangeListener(this)
         }
 
-        private fun removeChipsListeners(){
+        private fun removeChipsListeners() {
             containerView.mondayChip.setOnCheckedChangeListener(null)
             containerView.tuesdayChip.setOnCheckedChangeListener(null)
             containerView.wednesdayChip.setOnCheckedChangeListener(null)

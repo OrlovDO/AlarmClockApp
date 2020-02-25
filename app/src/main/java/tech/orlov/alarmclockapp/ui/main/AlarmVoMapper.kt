@@ -25,7 +25,7 @@ class AlarmVoMapper @Inject constructor() {
         return AlarmDayOfWeekVo.valueOf(alarmDayOfWeek.name)
     }
 
-    private fun format(hours: Int, minutes: Int): String{
+    private fun format(hours: Int, minutes: Int): String {
         return "$hours:$minutes"
     }
 

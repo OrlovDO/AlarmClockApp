@@ -27,7 +27,7 @@ class AlarmSource @Inject constructor(val context: Context) {
         }
     }
 
-    fun snoozeAlarm(){
+    fun snoozeAlarm() {
         alarmManager.set(
             AlarmManager.RTC,
             Calendar.getInstance().timeInMillis + 5000,
@@ -73,7 +73,7 @@ class AlarmSource @Inject constructor(val context: Context) {
         return PendingIntent.getBroadcast(context, requestCode, receiverIntent, 0)
     }
 
-    private fun buildRequestId(alarmId: Long, day: AlarmDayOfWeekDto): Int{
+    private fun buildRequestId(alarmId: Long, day: AlarmDayOfWeekDto): Int {
         return (alarmId * 10 + day.value).toInt()
     }
 

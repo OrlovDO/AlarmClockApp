@@ -7,7 +7,7 @@ import javax.inject.Inject
 class GetAllAlarmsCommand @Inject constructor(
     private val alarmDataBaseRepository: AlarmDataBaseRepository
 ) {
-    fun getAllAlarms(): Single<List<AlarmInfo>>{
+    fun getAllAlarms(): Single<List<AlarmInfo>> {
         return alarmDataBaseRepository.getAllAlarms()
     }
 }

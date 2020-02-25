@@ -12,7 +12,7 @@ class AlarmManagerRepository @Inject constructor(
 ) {
     fun setAlarm(alarmInfo: AlarmInfo): Single<List<Long>> {
         return Single.create<List<Long>> { emitter ->
-            if(alarmInfo.isEnabled) {
+            if (alarmInfo.isEnabled) {
                 val dateList = alarmSource.setRepeatableAlarm(alarmDtoMapper.map(alarmInfo))
                 emitter.onSuccess(dateList)
             } else {

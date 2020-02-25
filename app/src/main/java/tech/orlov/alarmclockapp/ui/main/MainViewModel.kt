@@ -4,7 +4,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import tech.orlov.alarmclockapp.domain.*
+import tech.orlov.alarmclockapp.domain.AddNewAlarmCommand
+import tech.orlov.alarmclockapp.domain.DeleteAlarmCommand
+import tech.orlov.alarmclockapp.domain.GetAllAlarmsCommand
+import tech.orlov.alarmclockapp.domain.UpdateAlarmCommand
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
@@ -30,7 +33,7 @@ class MainViewModel @Inject constructor(
         getAlarms()
     }
 
-    private fun getAlarms(){
+    private fun getAlarms() {
         disposables.add(
             getAllAlarmsCommand.getAllAlarms()
                 .observeOn(AndroidSchedulers.mainThread())
@@ -45,15 +48,15 @@ class MainViewModel @Inject constructor(
     fun updateTime(id: Long, hourOfDay: Int, minute: Int) {
         disposables.add(
             updateAlarmCommand.updateAlarm(id, hourOfDay, minute)
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ alarmNextAlarmPair ->
-                updatedAlarm.value = alarmVoMapper.map(alarmNextAlarmPair.first)
-                alarmNextAlarmPair.second?.let {
-                    nextAlarmMessage.value = nextAlarmMessageFormatter.format(it)
-                }
-            }, {
-                it.printStackTrace()
-            })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ alarmNextAlarmPair ->
+                    updatedAlarm.value = alarmVoMapper.map(alarmNextAlarmPair.first)
+                    alarmNextAlarmPair.second?.let {
+                        nextAlarmMessage.value = nextAlarmMessageFormatter.format(it)
+                    }
+                }, {
+                    it.printStackTrace()
+                })
         )
     }
 
@@ -89,7 +92,9 @@ class MainViewModel @Inject constructor(
 
     fun updateDaysOfWeekList(id: Long, daysOfWeek: List<AlarmDayOfWeekVo>) {
         disposables.add(
-            updateAlarmCommand.updateAlarm(id, daysOfWeek = daysOfWeek.map {alarmVoMapper.map(it)})
+            updateAlarmCommand.updateAlarm(
+                id,
+                daysOfWeek = daysOfWeek.map { alarmVoMapper.map(it) })
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ alarmNextAlarmPair ->
                     updatedAlarm.value = alarmVoMapper.map(alarmNextAlarmPair.first)

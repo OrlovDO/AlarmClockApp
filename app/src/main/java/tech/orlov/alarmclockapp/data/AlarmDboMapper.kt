@@ -46,7 +46,7 @@ class AlarmDboMapper @Inject constructor() {
     }
 
     private fun map(daysOfWeek: String): List<AlarmDayOfWeek> {
-        if(daysOfWeek.isEmpty())
+        if (daysOfWeek.isEmpty())
             return emptyList()
         return daysOfWeek.split(",")
             .map { AlarmDayOfWeek.valueOf(it) }

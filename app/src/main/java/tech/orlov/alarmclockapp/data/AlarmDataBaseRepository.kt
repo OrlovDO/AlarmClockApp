@@ -42,7 +42,7 @@ class AlarmDataBaseRepository @Inject constructor(
     fun getAllAlarms(): Single<List<AlarmInfo>> {
         return alarmDao.getAllAlarms()
             .subscribeOn(Schedulers.io())
-            .map {alarmList ->
+            .map { alarmList ->
                 alarmList.map {
                     alarmDboMapper.map(it)
                 }

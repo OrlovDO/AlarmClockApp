@@ -5,7 +5,7 @@ import android.content.Intent
 import dagger.android.DaggerBroadcastReceiver
 import javax.inject.Inject
 
-class AlarmBootReceiver: DaggerBroadcastReceiver() {
+class AlarmBootReceiver : DaggerBroadcastReceiver() {
     @Inject
     lateinit var alarmBootController: AlarmBootController
 

@@ -1,6 +1,5 @@
 package tech.orlov.alarmclockapp.di
 
-import android.app.Application
 import android.content.Context
 import androidx.room.Room
 import dagger.Module

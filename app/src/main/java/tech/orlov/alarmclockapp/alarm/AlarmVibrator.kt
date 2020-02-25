@@ -16,7 +16,7 @@ class AlarmVibrator @Inject constructor(context: Context) {
         vibrator.cancel()
     }
 
-    companion object{
+    companion object {
         private val VIBRATION_PATTERN = longArrayOf(500, 300)
     }
 }

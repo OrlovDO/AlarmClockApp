@@ -6,7 +6,9 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.os.*
+import android.os.Build
+import android.os.Handler
+import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import dagger.android.DaggerService
 import tech.orlov.alarmclockapp.R
@@ -97,16 +99,16 @@ class AlarmService : DaggerService() {
         return PendingIntent.getService(this, 1, intent, 0)
     }
 
-    private fun finish(){
+    private fun finish() {
         alarmVibrator.stopVibration()
         handler.removeCallbacksAndMessages(null)
         stopSelf()
     }
 
-    companion object{
+    companion object {
         private const val ACTION_START = "START"
         private const val ACTION_STOP = "STOP"
         private const val ACTION_SNOOZE = "SNOOZE"
-        private const val ALARM_TIME: Long = 1000*60
+        private const val ALARM_TIME: Long = 1000 * 60
     }
 }

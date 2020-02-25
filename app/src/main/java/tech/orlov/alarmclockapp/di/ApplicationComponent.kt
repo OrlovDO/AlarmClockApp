@@ -1,6 +1,5 @@
 package tech.orlov.alarmclockapp.di
 
-import android.app.Application
 import android.content.Context
 import dagger.BindsInstance
 import dagger.Component

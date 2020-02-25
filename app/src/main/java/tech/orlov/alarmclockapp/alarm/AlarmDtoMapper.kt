@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 class AlarmDtoMapper @Inject constructor() {
 
-    fun map(alarmInfo: AlarmInfo): AlarmInfoDto{
+    fun map(alarmInfo: AlarmInfo): AlarmInfoDto {
         return AlarmInfoDto(
             alarmInfo.id,
             alarmInfo.hours,
@@ -15,7 +15,7 @@ class AlarmDtoMapper @Inject constructor() {
         )
     }
 
-    private fun map(alarmDayOfWeek: AlarmDayOfWeek): AlarmDayOfWeekDto{
+    private fun map(alarmDayOfWeek: AlarmDayOfWeek): AlarmDayOfWeekDto {
         return AlarmDayOfWeekDto.valueOf(alarmDayOfWeek.name)
     }
 }

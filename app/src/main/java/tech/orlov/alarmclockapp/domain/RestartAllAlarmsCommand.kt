@@ -11,7 +11,7 @@ class RestartAllAlarmsCommand @Inject constructor(
 ) {
     fun restartAlarms(): Completable {
         return getAllAlarmsCommand.getAllAlarms()
-            .flatMapObservable { Observable.fromIterable(it)}
-            .flatMapCompletable { alarmManagerRepository.setAlarm(it).ignoreElement()}
+            .flatMapObservable { Observable.fromIterable(it) }
+            .flatMapCompletable { alarmManagerRepository.setAlarm(it).ignoreElement() }
     }
 }
