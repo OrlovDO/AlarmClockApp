@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AlarmClockApp</string>
+    <string name="monday_chip_title">ПН</string>
+    <string name="tuesday_chip_title">ВТ</string>
+    <string name="wednesday_chip_title">СР</string>
+    <string name="thursday_chip_title">ЧТ</string>
+    <string name="friday_chip_title">ПТ</string>
+    <string name="saturday_chip_title">СБ</string>
+    <string name="sunday_chip_title">ВС</string>
+    <string name="delete_alarm">удалить будильник</string>
+</resources>
